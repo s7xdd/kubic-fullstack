@@ -9,8 +9,8 @@
                     <div class="card text-left">
                         <div class="card-body">
                             <div class="mb-5 text-center">
-                                <img src="{{ asset('assets/img/logo-main.svg') }}" class="mw-100 mb-4" >
-                                <h1 class="h3 text-primary mb-0">{{  trans('messages.login') }} </h1>
+                                <img src="{{ uploaded_asset(get_setting('site_logo_colored')) }}" class="mw-100 mb-4">
+                                <h1 class="h3 text-primary mb-0">{{ trans('messages.login') }} </h1>
                                 {{-- <p>{{  trans('messages.Login to your account.') }}</p> --}}
 
                             </div>
@@ -20,7 +20,7 @@
                                     <input id="email" type="email"
                                         class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"
                                         value="{{ old('email') }}" required autofocus
-                                        placeholder="{{  trans('messages.email') }}">
+                                        placeholder="{{ trans('messages.email') }}">
                                     @if ($errors->has('email'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('email') }}</strong>
@@ -30,7 +30,7 @@
                                 <div class="form-group">
                                     <input id="password" type="password"
                                         class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
-                                        name="password" required placeholder="{{  trans('messages.password') }}">
+                                        name="password" required placeholder="{{ trans('messages.password') }}">
                                     @if ($errors->has('password'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('password') }}</strong>
@@ -43,7 +43,7 @@
                                             <label class="aiz-checkbox">
                                                 <input type="checkbox" name="remember" id="remember"
                                                     {{ old('remember') ? 'checked' : '' }}>
-                                                <span>{{  trans('messages.remember_me') }}</span>
+                                                <span>{{ trans('messages.remember_me') }}</span>
                                                 <span class="aiz-square-check"></span>
                                             </label>
                                         </div>
@@ -58,7 +58,7 @@
                                     @endif --}}
                                 </div>
                                 <button type="submit" class="btn btn-primary btn-lg btn-block">
-                                    {{  trans('messages.login') }}
+                                    {{ trans('messages.login') }}
                                 </button>
                             </form>
                             @if (env('DEMO_MODE') == 'On')
@@ -69,7 +69,7 @@
                                                 <td>admin@example.com</td>
                                                 <td>123456</td>
                                                 <td><button class="btn btn-info btn-xs"
-                                                        onclick="autoFill()">{{  trans('messages.Copy') }}</button></td>
+                                                        onclick="autoFill()">{{ trans('messages.Copy') }}</button></td>
                                             </tr>
                                         </tbody>
                                     </table>
