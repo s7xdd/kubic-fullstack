@@ -1,0 +1,83 @@
+@import url("https://fonts.cdnfonts.com/css/helvetica-neue-5");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    html {
+        font-family: "Helvetica Neue", sans-serif;
+    }
+}
+
+/* Project Number Outline with Helvetica Neue */
+.project-number-outline {
+    font-family: "Helvetica Neue", sans-serif;
+
+    font-size: 4rem; /* 64px */
+    font-weight: bold;
+    -webkit-text-stroke: 1px #c5a26b;
+    text-stroke: 1px #c5a26b; /* fallback for older browsers */
+    color: transparent;
+    line-height: 1;
+}
+
+/* Swiper Custom Bullets */
+.swiper-pagination-bullet.custom-bullet {
+    background-color: #c5a26b;
+    width: 10px;
+    height: 10px;
+    margin: 0 4px;
+    border-radius: 9999px;
+    transition: background-color 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #c5a26b;
+}
+
+@layer utilities {
+    @keyframes loader-fill {
+        0% {
+            width: 0%;
+        }
+        100% {
+            width: 100%;
+        }
+    }
+
+    @keyframes logo-left {
+        0% {
+            opacity: 0;
+            transform: translateX(-100px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes logo-right {
+        0% {
+            opacity: 0;
+            transform: translateX(100px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    .animate-loader-fill {
+        animation: loader-fill 2s ease-out forwards;
+    }
+
+    .animate-logo-left {
+        animation: logo-left 1.2s ease-out forwards;
+        animation-delay: 0.2s;
+    }
+
+    .animate-logo-right {
+        animation: logo-right 1.2s ease-out forwards;
+        animation-delay: 0.2s;
+    }
+}
