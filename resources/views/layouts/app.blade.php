@@ -12,9 +12,16 @@
 
     <link href="{{ asset('dist/assets/app-97de3ed1.css') }}" rel="stylesheet">
     <link href="{{ asset('dist/assets/app-afc193cb.css') }}" rel="stylesheet">
-    <script type="module" src="{{ asset('dist/assets/app-f10b86b9.js') }}"></script>
 
     <link href="https://fonts.cdnfonts.com/css/helvetica-neue-5" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ asset('build/assets/app-DHTTEZyo.css') }}">
+    <link rel="stylesheet" href="{{ asset('build/assets/app-8MreAzjN.css') }}">
+
+
+    <script type="module" src="{{ asset('dist/assets/app-8_ob876P.js') }}"></script>
+    <script type="module" src="{{ asset('build/assets/photoswipe.esm-D2Nf-uDI.js') }}"></script>
+
 
     <style>
         body {
