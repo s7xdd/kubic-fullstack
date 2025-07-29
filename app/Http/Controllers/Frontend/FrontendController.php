@@ -30,6 +30,7 @@ use Artesaos\SEOTools\Facades\JsonLdMulti;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Illuminate\Support\Facades\URL;
 use App\Http\Resources\WebHomeProductsCollection;
+use App\Models\Partners;
 use App\Models\Project;
 use App\Models\RequestAccess;
 use Storage;
@@ -173,8 +174,10 @@ class FrontendController extends Controller
             'twitter_description'   => $page->getTranslation('twitter_description', $lang),
         ];
 
+        $partners = Partners::where('status', 1)->orderBy('sort_order', 'asc')->get();
+
         $this->loadSEO($seo);
-        return view('pages.about', compact('page', 'lang'));
+        return view('pages.about', compact('page', 'lang', 'partners'));
     }
 
     public function services()
