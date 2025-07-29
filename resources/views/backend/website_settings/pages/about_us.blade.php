@@ -4,7 +4,6 @@
     @php
         $animatedBlocks = json_decode($page->getTranslation('heading5', $lang) ?? '[]', true);
         $highlights = json_decode($page->getTranslation('heading6', $lang) ?? '[]', true);
-        $partners = json_decode($page->getTranslation('heading7', $lang) ?? '[]', true);
     @endphp
 
     <div class="aiz-titlebar text-left mt-2 mb-3">
@@ -275,27 +274,34 @@
                             value="{{ old('heading8', $page->getTranslation('heading8', $lang) ?? '') }}">
                     </div>
                 </div>
-                <div class="form-group row">
-                    <label class="col-sm-2 col-from-label">Partners</label>
-                    <div class="col-sm-10" id="partners-container">
-                    </div>
-                    <div class="col-sm-10 offset-sm-2">
-                        <button type="button" class="btn btn-outline-primary btn-sm mb-2" onclick="addPartner()">+ Add
-                            Partner</button>
-                    </div>
-                </div>
-                <input type="hidden" name="heading7" id="section5_partners_json">
 
                 <div class="form-group row">
-                    <label class="col-sm-2 col-from-label">Project Images (Multiple)</label>
+                    <label class="col-sm-2 col-from-label">Client Images (Multiple)</label>
                     <div class="col-sm-10">
-                        <div class="input-group" data-toggle="aizuploader" data-type="image">
+                        <div class="input-group" data-toggle="aizuploader" data-multiple="true" data-type="image">
                             <div class="input-group-prepend">
                                 <div class="input-group-text bg-soft-secondary font-weight-medium">Browse</div>
                             </div>
                             <div class="form-control file-amount">Choose Files</div>
-                            <input type="hidden" name="heading10" class="selected-files"
-                                value="{{ $page->heading10 }}">
+                            <input type="hidden" name="heading7" class="selected-files"
+                                value="{{ old('heading7', $page->getTranslation('heading7', $lang) ?? '') }}">
+                        </div>
+                        <div class="file-preview box sm">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-2 col-from-label">Project Images (Multiple)</label>
+                    <div class="col-sm-10">
+                        <div class="input-group" data-toggle="aizuploader" data-multiple="true" data-type="image">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text bg-soft-secondary font-weight-medium">Browse</div>
+                            </div>
+                            <div class="form-control file-amount">Choose Files</div>
+                            <input type="hidden" name="multipleImages" class="selected-files"
+                                value="{{ $page->multipleImages }}">
                         </div>
                         <div class="file-preview box sm">
                         </div>
@@ -398,14 +404,6 @@
             });
             $('#section4_highlights_json').val(JSON.stringify(highlights));
 
-            let partners = [];
-            $('#partners-container .partner-item').each(function() {
-                partners.push({
-                    icon: $(this).find('.partner-icon').val()
-                });
-            });
-            $('#section5_partners_json').val(JSON.stringify(partners));
-
             prepareAboutSectionJSON();
 
             return true;
@@ -435,19 +433,6 @@
     `);
         }
 
-        function addPartner() {
-            $('#partners-container').append(`
-        <div class="partner-item p-2 border rounded mb-2">
-            <div class="input-group" data-toggle="aizuploader" data-type="image">
-                <div class="input-group-prepend"><div class="input-group-text bg-soft-secondary font-weight-medium">Browse</div></div>
-                <div class="form-control file-amount">Choose File</div>
-                <input type="hidden" class="partner-icon selected-files">
-            </div>
-            <div class="file-preview box sm"></div>
-            <button type="button" class="btn btn-danger btn-sm mt-1" onclick="$(this).closest('.partner-item').remove();">Remove</button>
-        </div>
-    `);
-        }
 
         function prepareAboutSectionJSON() {
             const data = [];
@@ -516,25 +501,6 @@
      </div>
     `);
             });
-
-            let partners = @json($partners);
-            partners.forEach(function(partner) {
-                const icon = partner.icon ?? '';
-                $('#partners-container').append(`
-<div class="partner-item p-2 border rounded mb-2">
- <div class="input-group" data-toggle="aizuploader" data-type="image">
-  <div class="input-group-prepend">
-   <div class="input-group-text bg-soft-secondary font-weight-medium">Browse</div>
-  </div>
-  <div class="form-control file-amount">Choose File</div>
-  <input type="hidden" class="partner-icon selected-files" value="${icon}">
- </div>
- <div class="file-preview box sm"></div>
- <button type="button" class="btn btn-danger btn-sm mt-1" onclick="$(this).closest('.partner-item').remove();">Remove</button>
-</div>
-`);
-            });
-
 
         });
     </script>

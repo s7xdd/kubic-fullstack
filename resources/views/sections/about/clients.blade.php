@@ -2,7 +2,7 @@
     @php
         $animatedBlocks = json_decode($page->getTranslation('heading5', $lang) ?? '[]', true);
         $highlights = json_decode($page->getTranslation('heading6', $lang) ?? '[]', true);
-        $partners = json_decode($page->getTranslation('heading7', $lang) ?? '[]', true);
+        $partners = explode(',', $page->getTranslation('heading7', $lang));
     @endphp
 
     <x-container>
@@ -44,7 +44,7 @@
             @foreach ($partners as $partner)
                 <div
                     class="bg-[#151515] px-6 py-4 rounded-full flex items-center justify-center h-[60px] w-[120px] hover:border-primary border border-white/5 transition">
-                    <img src="{{ uploaded_asset($partner['icon'] ?? '') }}" alt="{{ $partner['name'] ?? 'Client' }}"
+                    <img src="{{ uploaded_asset($partner) }}" alt="{{ 'Client' }}"
                         class="h-6 object-contain grayscale hover:grayscale-0 transition duration-300 ease-in-out" />
                 </div>
             @endforeach

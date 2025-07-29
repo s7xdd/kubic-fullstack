@@ -106,38 +106,18 @@
                     </div>
 
                     <div class="form-group row">
-                        <label class="col-md-3 col-form-label" for="gallery_images">
-                            {{ trans('messages.gallery_images') }}
-                            <small>({{ trans('messages.1000*1000') }})</small>
-                        </label>
-
-                        <div class="col-md-8">
-                            <input type="file" name="gallery_images[]" multiple class="form-control" accept="image/*">
-
-                            @if (!empty($project->photos))
-                                <div class="file-preview box sm mt-3" id="gallery-preview">
-                                    @php
-                                        $photos = explode(',', $project->photos);
-                                    @endphp
-
-                                    @foreach ($photos as $photo)
-                                        <div
-                                            class="d-flex justify-content-between align-items-center mt-2 file-preview-item">
-                                            <div
-                                                class="align-items-center align-self-stretch d-flex justify-content-center thumb">
-                                                <img src="{{ asset($photo) }}" class="img-fit"
-                                                    style="width: 100px; height: auto;">
-                                            </div>
-                                            <div class="remove">
-                                                <button type="button" class="btn btn-link text-danger remove-gallery-image"
-                                                    data-url="{{ $photo }}" data-project-id="{{ $project->id }}">
-                                                    <i class="la la-close"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    @endforeach
+                        <label class="col-md-3 col-form-label">{{ trans('messages.gallery_images') }}</label>
+                        <div class="col-md-9">
+                            <div class="input-group" data-toggle="aizuploader" data-multiple="true" data-type="image">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text bg-soft-secondary font-weight-medium">Browse</div>
                                 </div>
-                            @endif
+                                <div class="form-control file-amount">Choose Files</div>
+                                <input type="hidden" name="photos" class="selected-files"
+                                    value="{{ old('photos', $project->photos) }}">
+                            </div>
+                            <div class="file-preview box sm">
+                            </div>
                         </div>
                     </div>
 

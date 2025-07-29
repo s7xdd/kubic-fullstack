@@ -50,7 +50,6 @@ class ProjectController extends Controller
 
         $request->validate([
             'name' => 'required',
-            'gallery_images' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'slug' => 'required',
         ]);
 
@@ -83,14 +82,8 @@ class ProjectController extends Controller
         $tagsData = getTagsFromRequest($request);
         $project->tags = $tagsData['tags'];
 
-        $gallery = [];
-        if ($request->hasFile('gallery_images')) {
-            $count = 1;
-            foreach ($request->file('gallery_images') as $image) {
-                $gallery[] = $this->downloadAndResizeImageForProject($image, $slug, false, $count++);
-            }
-            $project->photos = implode(',', $gallery);
-        }
+
+        $project->photos = $request->photos;
 
         $project->save();
 
@@ -158,14 +151,8 @@ class ProjectController extends Controller
             $tagsData = getTagsFromRequest($request);
             $project->tags = $tagsData['tags'];
 
-            $gallery = [];
-            if ($request->hasFile('gallery_images')) {
-                $count = 1;
-                foreach ($request->file('gallery_images') as $image) {
-                    $gallery[] = $this->downloadAndResizeImageForProject($image, $slug, false, $count++);
-                }
-                $project->photos = implode(',', $gallery);
-            }
+            $project->photos = $request->photos;
+
 
             $project->save();
         }

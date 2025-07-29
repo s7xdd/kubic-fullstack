@@ -300,7 +300,7 @@ class FrontendController extends Controller
             'hero' => $project->photos ? explode(',', $project->photos)[0] : 'images/projects/default.jpg',
             'feature' => $project->image,
             'description' => $project->getTranslation('description', $lang) ?? '',
-            'gallery' => $project->photos ? explode(',', $project->photos) : [],
+            'gallery' => $project->photos ? $project->photos : [],
             'stats' => $project->highlights ? json_decode($project->highlights, true) : [],
             'image' => $project->image ?? 'default.jpg',
             'project_type' => $project->completion_status == '1' ? 'completed' : 'upcoming',

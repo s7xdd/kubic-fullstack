@@ -96,15 +96,19 @@
                         <div class="form-group row">
                             <label class="col-md-2 col-form-label" for="gallery_images">
                                 {{ trans('messages.gallery_images') }}
-                                <small>({{ trans('messages.1000*1000') }})</small>
                             </label>
-
                             <div class="col-md-10">
-                                <input type="file" name="gallery_images[]" multiple class="form-control"
-                                    accept="image/*">
+                                <div class="input-group" data-toggle="aizuploader" data-multiple="true" data-type="image">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text bg-soft-secondary font-weight-medium">Browse</div>
+                                    </div>
+                                    <div class="form-control file-amount">Choose Files</div>
+                                    <input type="hidden" name="photos" class="selected-files">
+                                </div>
+                                <div class="file-preview box sm">
+                                </div>
                             </div>
                         </div>
-
 
                         <div class="form-group row">
                             <label class="col-md-2 col-from-label">{{ trans('messages.description') }}</label>

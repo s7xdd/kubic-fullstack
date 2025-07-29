@@ -8,6 +8,10 @@
         'image' => asset($project['hero']),
     ])
 
+    @php
+        $galleryImages = explode(',', $project['gallery'] ?? '');
+    @endphp
+
     <section class="bg-black text-white py-24 border-b border-white/10 fade-wrapper font-sans font-light">
         <x-container>
             @if (!empty($project['stats']))
@@ -67,7 +71,7 @@
     </section>
 
 
-    @if (!empty($project['gallery']) && count($project['gallery']))
+    @if (!empty($galleryImages) && count($galleryImages))
         <section class="bg-[#111] py-24 relative">
             <div class="absolute right-0 top-0 h-full w-1 bg-primary/10"></div>
             <x-container>
@@ -76,13 +80,12 @@
                     <div class="w-20 h-1 bg-primary mb-6"></div>
                 </div>
                 <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery">
-                    @foreach ($project['gallery'] as $img)
-                        @php $fullPath = asset($img); @endphp
-                        <a href="{{ $fullPath }}" data-pswp-width="1600" data-pswp-height="1067" target="_blank"
+                    @foreach ($galleryImages as $img)
+                        <div data-pswp-width="1600" data-pswp-height="1067" target="_blank"
                             class="gallery-item block overflow-hidden rounded-lg shadow border border-white/10 hover:border-primary transition-all duration-300">
-                            <img src="{{ $fullPath }}" alt="{{ $project['title'] }} image"
+                            <img src="{{ uploaded_asset($img) }}" alt="{{ $project['title'] }} image"
                                 class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
-                        </a>
+                        </div>
                     @endforeach
                 </div>
             </x-container>
