@@ -56,7 +56,7 @@ class ServiceController extends Controller
         $service = new Service;
         $service->name = $request->name ?? NULL;
         $service->slug = $slug;
-        $service->price = $request->price;
+        $service->price = $request->price ?? 0;
         $service->image = $request->image;
         $service->status = $request->status;
         $service->sort_order = $request->sort_order;
@@ -110,7 +110,7 @@ class ServiceController extends Controller
             $service->name = $request->name;
             $service->status = $request->status;
             $service->slug = $slug;
-            $service->price = $request->price;
+            $service->price = $request->price ?? 0;
             $service->image = $request->image;
             $service->sort_order = $request->sort_order;
             $service->parent_id = $request->parent_id ?? null;
