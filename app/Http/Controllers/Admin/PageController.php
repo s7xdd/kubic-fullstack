@@ -74,15 +74,10 @@ class PageController extends Controller
         if ($page != null) {
             $page_id = $page->id;
             if ($id == 'home') {
-
-                $categories = Category::where('parent_id', 0)->where('is_active', 1)->with('childrenCategories')->get();
-
-                $products = Product::select('id', 'name')->where('published', 1)->get();
-                $brands = Brand::where('is_active', 1)->orderBy('name', 'asc')->get();
                 $services = Service::where('status', 1)->orderBy('name', 'asc')->get();
                 $projects = Project::where('status', 1)->orderBy('name', 'asc')->get();
 
-                return view('backend.website_settings.pages.home_page_edit', compact('page', 'services', 'categories', 'brands', 'products', 'lang', 'page_id', 'projects'));
+                return view('backend.website_settings.pages.home_page_edit', compact('page', 'services', 'lang', 'page_id', 'projects'));
             } else if ($id == 'blogs' || $id == 'product_list' || $id == 'service_list') {
                 return view('backend.website_settings.pages.blog_listing', compact('page', 'lang', 'page_id'));
             } else if ($id == 'contact_us') {
