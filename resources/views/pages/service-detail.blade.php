@@ -24,7 +24,7 @@
 
                     <div class="hidden md:block">
                         <div class="relative w-full h-[400px] overflow-hidden rounded shadow-lg">
-                            <img src="{{ asset('images/services/services-intro.png') }}" alt="Kubik Engineering Team at Work"
+                            <img src="{{ uploaded_asset($service->image) }}" alt="Kubik Engineering Team at Work"
                                 class="absolute inset-0 h-full w-full object-cover brightness-90 transition duration-300 hover:scale-105" />
                         </div>
                     </div>
@@ -63,7 +63,7 @@
                             @if ($service['image'])
                                 <div
                                     class="overflow-hidden rounded-md hidden md:block transition-all duration-500 ease-in-out w-70 h-36 group-hover:w-80 group-hover:h-44">
-                                    <img src="{{ asset($service['image']) }}" alt="{{ $service['title'] }}"
+                                    <img src="{{ $service['image'] }}" alt="{{ $service['title'] }}"
                                         class="h-full w-full object-cover transition-transform duration-500 ease-in-out transform scale-95 group-hover:scale-100" />
                                 </div>
                             @endif
