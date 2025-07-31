@@ -27,7 +27,7 @@
                     developments, Kubik ensures every finish is flawless.
                 </p> --}}
                 {!! $page->getTranslation('content1', $lang) !!}
-                <a href="{{ route('services.index') }}"
+                <a href="{{ route('projects.index') }}"
                     class="inline-block mt-4 px-6 py-2 bg-primary text-black text-sm rounded-full hover:bg-primary/90 transition font-light">
                     {{ $page->getTranslation('heading2', $lang) }}
                 </a>

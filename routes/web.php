@@ -21,8 +21,6 @@ Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('login', [AuthController::class, 'login']);
 Route::post('/request-access', [FrontendController::class, 'submitAccessRequest'])->name('access.submit');
 
-Route::get('/check-login-status', [UserController::class, 'checkLoginStatus'])->name('check.login.status');
-
 Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/projects', [FrontendController::class, 'projects'])->name('projects.index');
