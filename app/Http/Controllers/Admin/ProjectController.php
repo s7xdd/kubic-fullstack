@@ -70,7 +70,7 @@ class ProjectController extends Controller
         $project->parent_id = $request->parent_id ?? null;
 
         $highlights = [];
-        for ($i = 1; $i <= 3; $i++) {
+        for ($i = 1; $i <= 4; $i++) {
             $highlights[] = [
                 'title' => $request->input('title' . $i),
                 'subtitle' => $request->input('subtitle' . $i)
@@ -140,7 +140,7 @@ class ProjectController extends Controller
             $project->sort_order = $request->sort_order;
             $project->parent_id = $request->parent_id ?? null;
 
-            for ($i = 1; $i <= 3; $i++) {
+            for ($i = 1; $i <= 4; $i++) {
                 $highlights[] = [
                     'title' => $request->input('title' . $i),
                     'subtitle' => $request->input('subtitle' . $i)
