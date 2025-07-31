@@ -59,7 +59,8 @@
 
                 <div class="relative border-b border-white/10 pb-2">
                     <a href="{{ route('about-us') }}"
-                        class="group flex justify-between items-end w-full text-left hover:text-primary transition">
+                        class="group flex justify-between items-end w-full text-left hover:text-primary transition"
+                        @mouseenter="hovered = 'about'" @mouseleave="hovered = null">
                         <span>About</span>
                         <i
                             class="fi fi-ts-arrow-up-right text-primary text-3xl opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 ease-out"></i>
